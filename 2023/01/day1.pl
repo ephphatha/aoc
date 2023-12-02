@@ -54,8 +54,7 @@ say part2('two1nine',
 'xtwone3four',
 '4nineeightseven2',
 'zoneight234',
-'7pqrstsixteen'
-);
+'7pqrstsixteen');
 
 seek($input, 0, 0);
 say part2(readline($input));
