@@ -8,17 +8,8 @@ use feature qw(say);
 sub part1 {
 	my $sum = 0;
 	while (my $line = shift) {
-		chomp $line;
-		my $first = '';
-		if ($line =~ /^[^\d]*(\d)/) {
-			$first = $1;
-		}
-
-		my $last = '';
-		if ($line =~ /(\d)[^\d]*$/) {
-			$last = $1;
-		}
-		$sum += $first.$last;
+		my @digits = ($line =~ /(\d)/g);
+		$sum += $digits[0].$digits[-1];
 	}
 	return $sum;
 }
@@ -42,20 +33,9 @@ sub parseDigit {
 
 sub part2 {
 	my $sum = 0;
-	my $digitPattern = 'one|two|three|four|five|six|seven|eight|nine';
-	my $reversedDigitPattern = reverse $digitPattern;
 	while (my $line = shift) {
-		chomp $line;
-		my $first = '';
-		if ($line =~ /^.*?(\d|$digitPattern)/) {
-			$first = parseDigit($1);
-		}
-
-		my $last = '';
-		if ((scalar reverse $line) =~ /^.*?(\d|$reversedDigitPattern)/) {
-			$last = parseDigit(scalar reverse $1);
-		}
-		$sum += $first.$last;
+		my @digits = ($line =~ /(?=(\d|one|two|three|four|five|six|seven|eight|nine))/g);
+		$sum += parseDigit($digits[0]).parseDigit($digits[-1]);
 	}
 	return $sum;
 }
