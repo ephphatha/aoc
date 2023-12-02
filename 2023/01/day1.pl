@@ -7,7 +7,7 @@ use feature qw(say);
 
 sub part1 {
 	my $sum = 0;
-	while (my $line = shift) {
+	for my $line (@_) {
 		my @digits = ($line =~ /(\d)/g);
 		$sum += $digits[0].$digits[-1];
 	}
@@ -33,7 +33,7 @@ sub parseDigit {
 
 sub part2 {
 	my $sum = 0;
-	while (my $line = shift) {
+	for my $line (@_) {
 		my @digits = ($line =~ /(?=(\d|one|two|three|four|five|six|seven|eight|nine))/g);
 		$sum += parseDigit($digits[0]).parseDigit($digits[-1]);
 	}
