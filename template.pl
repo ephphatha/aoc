@@ -20,4 +20,3 @@ say part2();
 
 seek($input, 0, 0);
 say part2(readline($input));
-

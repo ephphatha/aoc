@@ -55,4 +55,3 @@ say part2('Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green',
 
 seek($input, 0, 0);
 say part2(readline($input));
-
